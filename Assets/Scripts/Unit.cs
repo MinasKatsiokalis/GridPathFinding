@@ -9,36 +9,39 @@ public class Unit : MonoBehaviour
 
     private void Awake()
     {
-        targetPosition = transform.position;
+        targetPosition = this.transform.position;
     }
 
     private void Start()
-    {
-        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
-        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+    {   
+        //Initialize Unit
+        gridPosition = LevelGrid.Instance.GetGridPosition(this.transform.position);
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this.gameObject.GetComponent<Unit>());
     }
 
     private void Update()
     {
+        float stoppingDistance = 0.05f;
 
-        float stoppingDistance = .01f;
         if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
-        {
-            Vector3 moveDirection = (targetPosition - transform.position).normalized;
+        {   
+            //Move unit to target position
+            Vector3 moveDirection = (targetPosition - this.transform.position).normalized;
             float moveSpeed = 4f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
-
+            
+            //Rotate Unit to face the direction it's moving
             float rotateSpeed = 10f;
             transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
 
         }
 
 
-        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(this.transform.position);
         if (newGridPosition != gridPosition)
         {
             // Unit changed Grid Position
-            LevelGrid.Instance.UnitMovedGridPosition(this, gridPosition, newGridPosition);
+            LevelGrid.Instance.UnitMovedGridPosition(this.gameObject.GetComponent<Unit>(), gridPosition, newGridPosition);
             gridPosition = newGridPosition;
         }
     }

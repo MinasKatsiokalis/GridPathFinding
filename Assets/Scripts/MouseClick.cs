@@ -29,6 +29,7 @@ public class MouseClick : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, instance.planeLayerMask);
+        //Debug.Log(raycastHit.point);
         return raycastHit.point;
     }
 

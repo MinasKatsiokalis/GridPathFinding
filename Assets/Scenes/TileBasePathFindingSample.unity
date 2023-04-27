@@ -445,7 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b301a0624f474d40bda0c9476382aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathfindingDebugObjectPrefab: {fileID: 738774918114934808, guid: a4c31e8f26e3e61418f56307935e01de, type: 3}
+  _pathfindingDebugObjectPrefab: {fileID: 738774918114934808, guid: a4c31e8f26e3e61418f56307935e01de, type: 3}
+  _unit: {fileID: 253583260}
 --- !u!4 &213026721
 Transform:
   m_ObjectHideFlags: 0

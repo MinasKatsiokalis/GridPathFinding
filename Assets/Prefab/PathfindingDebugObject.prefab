@@ -226,10 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c77067dc2e6c5f4ca9d7804d3e477c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poistionText: {fileID: 738774918469293183}
-  gCostText: {fileID: 135415161109452534}
-  hCostText: {fileID: 5808519158763448692}
-  fCostText: {fileID: 3130852090100539595}
+  _poistionText: {fileID: 738774918469293183}
+  _gCostText: {fileID: 135415161109452534}
+  _hCostText: {fileID: 5808519158763448692}
+  _fCostText: {fileID: 3130852090100539595}
+  _isWalkable: 1
 --- !u!1 &738774918469293181
 GameObject:
   m_ObjectHideFlags: 0

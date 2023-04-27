@@ -5,11 +5,13 @@ using TMPro;
 
 public class PathfindingDebugObject : MonoBehaviour
 {
-    [SerializeField] private TMP_Text poistionText;
+    [SerializeField] private TMP_Text _poistionText;
 
-    [SerializeField] private TMP_Text gCostText;
-    [SerializeField] private TMP_Text hCostText;
-    [SerializeField] private TMP_Text fCostText;
+    [SerializeField] private TMP_Text _gCostText;
+    [SerializeField] private TMP_Text _hCostText;
+    [SerializeField] private TMP_Text _fCostText;
+
+    [SerializeField] private bool _isWalkable = true;
 
     private PathNode pathNode;
 
@@ -17,11 +19,14 @@ public class PathfindingDebugObject : MonoBehaviour
     {
         this.pathNode = pathNode;
     }
+
     private void Update()
     {
-        poistionText.text = pathNode.ToString();
-        gCostText.text = pathNode.GetGCost().ToString();
-        hCostText.text = pathNode.GetHCost().ToString();
-        fCostText.text = pathNode.GetFCost().ToString();
+        _poistionText.text = pathNode.ToString();
+        _gCostText.text = pathNode.GetGCost().ToString();
+        _hCostText.text = pathNode.GetHCost().ToString();
+        _fCostText.text = pathNode.GetFCost().ToString();
+
+        pathNode.SetIsWalkable(_isWalkable);
     }
 }

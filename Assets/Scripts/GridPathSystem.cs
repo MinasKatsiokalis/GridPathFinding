@@ -104,11 +104,9 @@ public class GridPathSystem
         {
             PathNode currentNode = GetLowestFCostPathNode(openList);
 
+            //End
             if (currentNode == endNode)
-            {
-                //End
                 return CalculatePath(endNode);
-            }
 
             openList.Remove(currentNode);
             closedList.Add(currentNode);
@@ -116,7 +114,12 @@ public class GridPathSystem
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (closedList.Contains(neighbourNode))
+                    continue;
+
+
+                if (!neighbourNode.IsWalkable())
                 {
+                    closedList.Add(neighbourNode);
                     continue;
                 }
 
@@ -141,15 +144,16 @@ public class GridPathSystem
     private int CalculateDistance(GridPosition gridPositionA, GridPosition gridPositionB)
     {
         GridPosition gridPositionDistance = (gridPositionA - gridPositionB);
-        int distance = Mathf.Abs(gridPositionDistance.x) + Mathf.Abs(gridPositionDistance.z);
-        return distance * MOVE_STRAIGHT_COST;
-        /*
+
+        /*int distance = Mathf.Abs(gridPositionDistance.x) + Mathf.Abs(gridPositionDistance.z);
+        return distance * MOVE_STRAIGHT_COST;*/
+        
         int xDistance = Mathf.Abs(gridPositionDistance.x);
         int zDistance = Mathf.Abs(gridPositionDistance.z);
         int remaining = Mathf.Abs(xDistance - zDistance);
 
         return MOVE_DIAGONAL_COST * Mathf.Min(xDistance, zDistance) + MOVE_STRAIGHT_COST * remaining;
-        */
+        
     }
 
     private PathNode GetLowestFCostPathNode(List<PathNode> pathNodeList)

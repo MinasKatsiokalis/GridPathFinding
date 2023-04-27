@@ -47,7 +47,7 @@ public class PathFinding : MonoBehaviour
         {
             gridPathPositionList = null;
 
-            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseClick.GetPosition());
+            GridPosition mouseGridPosition =PathFinding.Instance.GetGridPosition(MouseClick.GetPosition());
             GridPosition startGridPosition = new GridPosition(0, 0);
 
             gridPathPositionList = gridPathSystem.FindPath(startGridPosition, mouseGridPosition);

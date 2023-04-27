@@ -18,8 +18,8 @@ public class Unit : MonoBehaviour
     private void Start()
     {   
         //Initialize Unit
-        gridPosition = LevelGrid.Instance.GetGridPosition(this.transform.position);
-        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this.gameObject.GetComponent<Unit>());
+        gridPosition = PathFinding.Instance.GetGridPosition(this.transform.position);
+        //PathFinding.Instance.AddUnitAtGridPosition(gridPosition, this.gameObject.GetComponent<Unit>());
 
 
         currentPositionIndex = 0;
@@ -66,8 +66,8 @@ public class Unit : MonoBehaviour
                 positionList.Clear();
                 currentPositionIndex = 0;
             }
-        }
-        */
+        }*/
+        
     }
 
     public void Move(Vector3 targetPosition)
